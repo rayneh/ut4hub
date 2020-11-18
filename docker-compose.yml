@@ -1,0 +1,20 @@
+version: "3"
+services:
+  ut4hub: 
+    image: ut4hub
+    container_name: ut4hub 
+    environment:
+      - SERVERNAME="UT4 Docker Hub"
+      - SERVERMOTD="A UT4 Docker Hub!"
+      - SERVERRCON="asdf1234"
+      - SERVERTICKRATE=120
+      - SERVERNETSPEED=24000
+    volumes:
+      - /home/ubuntu/ut4hub/paks:/paks
+      - /home/ubuntu/ut4hub/rules:/rules
+      - /home/ubuntu/ut4hub/config:/config
+    ports: 
+      - 8000-8500:8000-8500/udp # instance ports start at 8000 and go up from there
+      - 14000:14000/udp         # instance comm port
+      - 7777:7777/udp           # game comm port
+      - 7787:7787/udp           # query port
